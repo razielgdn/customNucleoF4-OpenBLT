@@ -1,5 +1,0 @@
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/timer.c:69:6:TimerInit	8	static
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/timer.c:109:6:TimerReset	0	static
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/timer.c:129:6:TimerUpdate	4	static
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/timer.c:161:12:TimerGet	8	static
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/timer.c:182:10:HAL_GetTick	8	static

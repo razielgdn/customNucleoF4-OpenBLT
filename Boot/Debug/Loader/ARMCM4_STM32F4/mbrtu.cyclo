@@ -1,6 +1,0 @@
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/mbrtu.c:378:17:MbRtuReceiveByte	4
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/mbrtu.c:436:13:MbRtuTransmitByte	6
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/mbrtu.c:194:6:MbRtuTransmitPacket	4
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/mbrtu.c:490:12:MbRtuFreeRunningCounterGet	1
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/mbrtu.c:94:6:MbRtuInit	3
-/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/mbrtu.c:272:10:MbRtuReceivePacket	11

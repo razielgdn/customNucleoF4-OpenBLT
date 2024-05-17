@@ -1,4 +1,0 @@
-../App/hooks.c:52:10:CpuUserProgramStartHook	8	static
-../App/hooks.c:86:6:MbRtuDriverOutputControlHook	0	static
-../App/hooks.c:122:6:CopInitHook	8	static
-../App/hooks.c:139:6:CopServiceHook	8	static

@@ -1,4 +1,0 @@
-../App/hooks.c:52:10:CpuUserProgramStartHook	2
-../App/hooks.c:86:6:MbRtuDriverOutputControlHook	1
-../App/hooks.c:122:6:CopInitHook	1
-../App/hooks.c:139:6:CopServiceHook	1
