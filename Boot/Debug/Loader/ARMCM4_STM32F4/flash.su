@@ -1,0 +1,14 @@
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:803:18:FlashGetSector	16	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:459:17:FlashInitBlock	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:611:17:FlashWriteBlock	24	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:488:25:FlashSwitchBlock	16	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:540:17:FlashAddToBlock	24	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:674:17:FlashEmptyCheckSector	16	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:738:17:FlashEraseSectors	48	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:227:6:FlashInit	0	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:245:10:FlashWrite	16	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:283:10:FlashErase	16	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:316:10:FlashWriteChecksum	16	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:385:10:FlashVerifyChecksum	0	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:415:10:FlashDone	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/flash.c:445:10:FlashGetUserProgBaseAddress	0	static

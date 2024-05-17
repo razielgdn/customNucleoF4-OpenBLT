@@ -1,0 +1,6 @@
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/nvm.c:57:6:NvmInit	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/nvm.c:79:10:NvmWrite	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/nvm.c:120:10:NvmErase	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/nvm.c:160:10:NvmVerifyChecksum	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/nvm.c:178:10:NvmGetUserProgBaseAddress	8	static
+/home/razielgdn/github-pages/Source/ARMCM4_STM32F4/nvm.c:193:10:NvmDone	8	static
