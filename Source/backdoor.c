@@ -148,7 +148,7 @@ void BackDoorCheck(void)
   if (backdoorOpen == BLT_TRUE)
   {
     /* check if the backdoor entry time window elapsed */
-    if (TimerGet() >= (BOOT_BACKDOOR_ENTRY_TIMEOUT_MS + backdoorExtensionTime + backdoorOpenTime))
+    if (TimerGet_openblt() >= (BOOT_BACKDOOR_ENTRY_TIMEOUT_MS + backdoorExtensionTime + backdoorOpenTime))
     {
       /* close the backdoor */
       backdoorOpen = BLT_FALSE;
@@ -212,7 +212,7 @@ void BackDoorRestartTimer(void)
   /* only restart the time if the backdoor is actually still open */
   if (backdoorOpen == BLT_TRUE)
   {
-    backdoorOpenTime = TimerGet();
+    backdoorOpenTime = TimerGet_openblt();
   }
 } /*** end of BackDoorRestartTimer ***/
 #endif /* BOOT_BACKDOOR_HOOKS_ENABLE == 0 */

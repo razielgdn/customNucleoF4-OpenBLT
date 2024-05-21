@@ -66,7 +66,7 @@ void LedBlinkTask(void)
   static blt_int32u nextBlinkEvent = 0;
 
   /* check for blink event */
-  if (TimerGet() >= nextBlinkEvent)
+  if (TimerGet_openblt() >= nextBlinkEvent)
   {
     /* toggle the LED state */
     if (ledOn == BLT_FALSE)
@@ -80,7 +80,7 @@ void LedBlinkTask(void)
       LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_5);
     }
     /* schedule the next blink event */
-    nextBlinkEvent = TimerGet() + ledBlinkIntervalMs;
+    nextBlinkEvent = TimerGet_openblt() + ledBlinkIntervalMs;
   }
 } /*** end of LedBlinkTask ***/
 

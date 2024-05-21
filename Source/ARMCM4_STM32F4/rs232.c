@@ -35,6 +35,8 @@
 #include "stm32f4xx_ll_usart.h"                  /* STM32 LL USART header              */
 
 
+
+
 /****************************************************************************************
 * Macro definitions
 ****************************************************************************************/
@@ -168,7 +170,7 @@ blt_bool Rs232ReceivePacket(blt_int8u *data, blt_int8u *len)
            (xcpCtoReqPacket[0] <= BOOT_COM_RS232_RX_MAX_DATA) )
       {
         /* store the start time */
-        xcpCtoRxStartTime = TimerGet();
+        xcpCtoRxStartTime = TimerGet_openblt();
         /* reset packet data count */
         xcpCtoRxLength = 0;
         /* indicate that a cto packet is being received */
@@ -200,7 +202,7 @@ blt_bool Rs232ReceivePacket(blt_int8u *data, blt_int8u *len)
     else
     {
       /* check packet reception timeout */
-      if (TimerGet() > (xcpCtoRxStartTime + RS232_CTO_RX_PACKET_TIMEOUT_MS))
+      if (TimerGet_openblt() > (xcpCtoRxStartTime + RS232_CTO_RX_PACKET_TIMEOUT_MS))
       {
         /* cancel cto packet reception due to timeout. note that that automaticaly
          * discards the already received packet bytes, allowing the host to retry.
@@ -247,14 +249,14 @@ static void Rs232TransmitByte(blt_int8u data)
   /* write byte to transmit holding register */
   LL_USART_TransmitData8(USART_CHANNEL, data);
   /* set timeout time to wait for transmit completion. */
-  timeout = TimerGet() + RS232_BYTE_TX_TIMEOUT_MS;
+  timeout = TimerGet_openblt() + RS232_BYTE_TX_TIMEOUT_MS;
   /* wait for tx holding register to be empty */
   while (LL_USART_IsActiveFlag_TXE(USART_CHANNEL) == 0)
   {
     /* keep the watchdog happy */
     CopService();
     /* break loop upon timeout. this would indicate a hardware failure. */
-    if (TimerGet() > timeout)
+    if (TimerGet_openblt() > timeout)
     {
       break;
     }

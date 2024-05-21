@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app.h"
+#include "blt_conf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,35 +48,18 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
-static void MX_USART1_UART_Init(void);
-/* USER CODE BEGIN PFP */
 
-/* USER CODE END PFP */
+#if (BOOT_COM_MBRTU_ENABLE > 0 || BOOT_COM_RS232_ENABLE > 0)
+	static void USART2_GPIO_Init(void);
+	static void USART1_GPIO_Init(void);
+#endif
 
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
@@ -86,13 +70,8 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART2_UART_Init();
-  MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
   /* Initialize the bootloader application. */
   AppInit();
-  /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -100,7 +79,6 @@ int main(void)
     /* Run the bootloader application. */
     AppTask();
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -159,7 +137,8 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
-static void MX_USART1_UART_Init(void)
+#if (BOOT_COM_MBRTU_ENABLE > 0 || BOOT_COM_RS232_ENABLE > 0)
+static void USART1_GPIO_Init(void)
 {
 
   /* USER CODE BEGIN USART1_Init 0 */
@@ -172,7 +151,6 @@ static void MX_USART1_UART_Init(void)
 
   /* Peripheral clock enable */
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_USART1);
-
   LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
   /**USART1 GPIO Configuration
   PA9   ------> USART1_TX
@@ -186,7 +164,6 @@ static void MX_USART1_UART_Init(void)
   GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-
 }
 
 /**
@@ -194,9 +171,8 @@ static void MX_USART1_UART_Init(void)
   * @param None
   * @retval None
   */
-static void MX_USART2_UART_Init(void)
+static void USART2_GPIO_Init(void)
 {
-
   /* USER CODE BEGIN USART2_Init 0 */
 
   /* USER CODE END USART2_Init 0 */
@@ -204,7 +180,6 @@ static void MX_USART2_UART_Init(void)
 
   /* Peripheral clock enable */
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2);
-
   LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
   /**USART2 GPIO Configuration
   PA2   ------> USART2_TX
@@ -218,6 +193,7 @@ static void MX_USART2_UART_Init(void)
   GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
+#endif
 
 /**
   * @brief GPIO Initialization Function
@@ -248,12 +224,25 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  #if (BOOT_COM_MBRTU_ENABLE > 0 || BOOT_COM_RS232_ENABLE > 0)
+	   USART2_GPIO_Init();
+	   USART1_GPIO_Init();
+  #endif
 
+  #if( BOOT_COM_CAN_ENABLE > 0 )
+	   __HAL_RCC_CAN1_CLK_ENABLE();
+	  /**CAN1 GPIO Configuration
+	  PA11     ------> CAN1_RX
+	  PA12     ------> CAN1_TX
+	  */
+	  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+	  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+	  GPIO_InitStruct.Pull = GPIO_NOPULL;
+	  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+	  GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
+	  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  #endif
 }
-
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
 
 /**
   * @brief  This function is executed in case of error occurrence.

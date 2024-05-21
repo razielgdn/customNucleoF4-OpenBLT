@@ -59,7 +59,7 @@
 	<variableList>
 		<variable>
 			<name>OPENBLT_ROOT</name>
-			<value>$%7BPARENT-3-PROJECT_LOC%7D/Source</value>
+			<value>$%7BPARENT-1-PROJECT_LOC%7D/Source</value>
 		</variable>
 	</variableList>
 </projectDescription>

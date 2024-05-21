@@ -158,7 +158,7 @@ void TimerUpdate(void)
 ** \return    Current value of the millisecond timer.
 **
 ****************************************************************************************/
-blt_int32u TimerGet(void)
+blt_int32u TimerGet_openblt(void)
 {
   /* Updating timer here allows this function to be called in a loop with timeout
    * detection.
@@ -167,7 +167,7 @@ blt_int32u TimerGet(void)
 
   /* Read and return the amount of milliseconds that passed since initialization. */
   return millisecond_counter;
-} /*** end of TimerGet ***/
+} /*** end of TimerGet_openblt ***/
 
 
 /************************************************************************************//**
@@ -179,10 +179,10 @@ blt_int32u TimerGet(void)
 ** \return    Current value of the millisecond timer.
 **
 ****************************************************************************************/
-uint32_t HAL_GetTick(void)
+uint32_t HAL_GetTick_openblt(void)
 {
   /* Link to the bootloader's 1ms timer. */
-  return TimerGet();
+  return TimerGet_openblt();
 } /*** end of HAL_GetTick ***/
 
 

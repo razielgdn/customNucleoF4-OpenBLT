@@ -111,8 +111,8 @@ void NetInit(void)
     /* initialize the network device */
     netdev_init();
     /* initialize the timer variables */
-    periodicTimerTimeOut = TimerGet() + NET_UIP_PERIODIC_TIMER_MS;
-    ARPTimerTimeOut = TimerGet() + NET_UIP_ARP_TIMER_MS;
+    periodicTimerTimeOut = TimerGet_openblt() + NET_UIP_PERIODIC_TIMER_MS;
+    ARPTimerTimeOut = TimerGet_openblt() + NET_UIP_ARP_TIMER_MS;
     /* initialize the uIP TCP/IP stack. */
     uip_init();
 #if (BOOT_COM_NET_DHCP_ENABLE == 0)
@@ -379,7 +379,7 @@ static void NetServerTask(void)
   }
 
   /* process TCP/IP Periodic Timer here. */
-  if (TimerGet() >= periodicTimerTimeOut)
+  if (TimerGet_openblt() >= periodicTimerTimeOut)
   {
     periodicTimerTimeOut += NET_UIP_PERIODIC_TIMER_MS;
     for (connection = 0; connection < UIP_CONNS; connection++)
@@ -416,7 +416,7 @@ static void NetServerTask(void)
   }
 
   /* process ARP Timer here. */
-  if (TimerGet() >= ARPTimerTimeOut)
+  if (TimerGet_openblt() >= ARPTimerTimeOut)
   {
     ARPTimerTimeOut += NET_UIP_ARP_TIMER_MS;
     uip_arp_timer();
