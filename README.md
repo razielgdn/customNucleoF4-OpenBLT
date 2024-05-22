@@ -1,13 +1,11 @@
 You can clone this repo with:    
-git clone    
+git clone  https://github.com/razielgdn/customNucleoF4-OpenBLT.git  
 
 main branch `Nucleo-F446RE`
 
-This project can be used with the Nucleo-F446RE board and can be ported to other boards with minimal changes. In the near future, support for the Blue Pill will be updated in the STM32-F103C8 branch.
-
-You can import the project to STM32CubeIDE with the [import tool](doc/importProject.md).
-
-After do it you can compile the system, short instructions to do it can be founded [here](doc/compile.md).
+This project can be used with the Nucleo-F446RE board and can be ported to other boards with minimal changes.
+- You can **import the project** to STM32CubeIDE with the [import tool](doc/importProject.md).
+- After do it you can **build the system**, short instructions to do it can be founded [here](doc/BuildProject.md).
 
 # OpenBLT use case
 This project adds CAN and RS232 interfaces to [OpenBLT](https://www.feaser.com/openblt/doku.php?id=homepage) to **Nucleo STM32-F446RE**. The original demo in the OpenBLT project only supports Modbus RTU (**MBRTU**) interface. 
@@ -67,16 +65,16 @@ Following documentation you can use [BootCommander](https://www.feaser.com/openb
 
 In linux systems (using a rapberrypi or a distro ) You can useBootCommander to flash the software. 
 
-- Flash with MBRTU using usart2 with BootCommander using linux:    
-` sudo ./BootCommander -s=xcp -t=xcp_mbrtu -d=/dev/ttyACM0 -b=57600 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `
-- Flash with RS232 using a USB - TTL converter in linux:
-`sudo ./BootCommander -s=xcp -t=xcp_rs232 -d=/dev/ttyUSB0 -b=57600 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `
+- Flash with MBRTU using usart2 with BootCommander using linux:   
+  ` sudo ./BootCommander -s=xcp -t=xcp_mbrtu -d=/dev/ttyACM0 -b=57600 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `
+- Flash with RS232 using a USB - TTL converter in linux:   
+  `sudo ./BootCommander -s=xcp -t=xcp_rs232 -d=/dev/ttyUSB0 -b=57600 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `
 - Fash with CAN using CANable in a linux system:
   1. Configure the Baudrate as **blt_conf.h** in the system.   
-  `sudo ip link set can0 type can bitrate 125000`   
-  `sudo ip link set up can0 `   
-  2. Flash with BootCommander.
-  ` sudo ./BootCommander -s=xcp -t=xcp_can -d=can0 -b=125000 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `
+     `sudo ip link set can0 type can bitrate 125000`      
+     `sudo ip link set up can0 `      
+  2. Flash with BootCommander.   
+     ` sudo ./BootCommander -s=xcp -t=xcp_can -d=can0 -b=125000 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `   
   3. You can se the output to check if it was successful:   
   ![](doc/images/01flashing.png)   
 
