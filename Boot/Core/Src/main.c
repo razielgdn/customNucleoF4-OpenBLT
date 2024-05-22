@@ -50,8 +50,12 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 
 #if (BOOT_COM_MBRTU_ENABLE > 0 || BOOT_COM_RS232_ENABLE > 0)
-	static void USART2_GPIO_Init(void);
-	static void USART1_GPIO_Init(void);
+  #if(BOOT_COM_MBRTU_CHANNEL_INDEX==0 || BOOT_COM_RS232_CHANNEL_INDEX==0)
+    static void USART1_GPIO_Init(void);
+  #endif
+  #if(BOOT_COM_MBRTU_CHANNEL_INDEX==1 || BOOT_COM_RS232_CHANNEL_INDEX==1)
+    static void USART2_GPIO_Init(void);
+  #endif  
 #endif
 
 int main(void)
@@ -132,67 +136,71 @@ void SystemClock_Config(void)
   LL_RCC_SetTIMPrescaler(LL_RCC_TIM_PRESCALER_TWICE);
 }
 
-/**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
+
 #if (BOOT_COM_MBRTU_ENABLE > 0 || BOOT_COM_RS232_ENABLE > 0)
-static void USART1_GPIO_Init(void)
-{
+  #if(BOOT_COM_MBRTU_CHANNEL_INDEX==0 || BOOT_COM_RS232_CHANNEL_INDEX==0)
+    /**
+    * @brief USART1 Initialization Function
+    * @param None
+    * @retval None
+    */
+    static void USART1_GPIO_Init(void)
+    {
 
-  /* USER CODE BEGIN USART1_Init 0 */
-  /* Note that the USART initialization that follows here is don't care. It is
-   * reconfigured upon bootloader initialization with function MbRtuInit().
-   */
-  /* USER CODE END USART1_Init 0 */
+      /* USER CODE BEGIN USART1_Init 0 */
+      /* Note that the USART initialization that follows here is don't care. It is
+      * reconfigured upon bootloader initialization with function MbRtuInit().
+      */
+      /* USER CODE END USART1_Init 0 */
 
-  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+      LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-  /* Peripheral clock enable */
-  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_USART1);
-  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-  /**USART1 GPIO Configuration
-  PA9   ------> USART1_TX
-  PA10   ------> USART1_RX
-  */
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_9|LL_GPIO_PIN_10;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
-  GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
-  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+      /* Peripheral clock enable */
+      LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_USART1);
+      LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+      /**USART1 GPIO Configuration
+      PA9   ------> USART1_TX
+      PA10   ------> USART1_RX
+      */
+      GPIO_InitStruct.Pin = LL_GPIO_PIN_9|LL_GPIO_PIN_10;
+      GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+      GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+      GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+      GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+      GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
+      LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-}
+    }
+  #endif
+  #if(BOOT_COM_MBRTU_CHANNEL_INDEX==1 || BOOT_COM_RS232_CHANNEL_INDEX==1)
+    /**
+      * @brief USART2 Initialization Function
+      * @param None
+      * @retval None
+      */
+    static void USART2_GPIO_Init(void)
+    {
+      /* USER CODE BEGIN USART2_Init 0 */
 
-/**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void USART2_GPIO_Init(void)
-{
-  /* USER CODE BEGIN USART2_Init 0 */
+      /* USER CODE END USART2_Init 0 */
+      LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-  /* USER CODE END USART2_Init 0 */
-  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  /* Peripheral clock enable */
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2);
-  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-  /**USART2 GPIO Configuration
-  PA2   ------> USART2_TX
-  PA3   ------> USART2_RX
-  */
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_2|LL_GPIO_PIN_3;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
-  GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
-  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-}
+      /* Peripheral clock enable */
+      LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2);
+      LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+      /**USART2 GPIO Configuration
+      PA2   ------> USART2_TX
+      PA3   ------> USART2_RX
+      */
+      GPIO_InitStruct.Pin = LL_GPIO_PIN_2|LL_GPIO_PIN_3;
+      GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+      GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+      GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+      GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+      GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
+      LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    }
+  #endif  
 #endif
 
 /**
