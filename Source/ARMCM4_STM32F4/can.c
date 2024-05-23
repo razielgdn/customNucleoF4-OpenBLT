@@ -283,7 +283,7 @@ void CanTransmitPacket(blt_int8u *data, blt_int8u len)
   if (txStatus == HAL_OK)
   {
     /* determine timeout time for the transmit completion. */
-    timeout = TimerGet_openblt() + CAN_MSG_TX_TIMEOUT_MS;
+    timeout = TimerGet() + CAN_MSG_TX_TIMEOUT_MS;
     /* poll for completion of the transmit operation. */
     while (HAL_CAN_IsTxMessagePending(&canHandle, txMsgMailbox) != 0)
     {
@@ -292,7 +292,7 @@ void CanTransmitPacket(blt_int8u *data, blt_int8u len)
       /* break loop upon timeout. this would indicate a hardware failure or no other
        * nodes connected to the bus.
        */
-      if (TimerGet_openblt() > timeout)
+      if (TimerGet() > timeout)
       {
         break;
       }

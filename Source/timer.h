@@ -33,7 +33,7 @@
 ****************************************************************************************/
 void       TimerInit(void);
 void       TimerUpdate(void);
-blt_int32u TimerGet_openblt(void);
+blt_int32u TimerGet(void);
 void       TimerReset(void);
 
 

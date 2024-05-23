@@ -440,7 +440,7 @@ static void MbRtuTransmitByte(blt_int8u data, blt_bool end_of_packet)
   /* write byte to transmit holding register */
   LL_USART_TransmitData8(USART_CHANNEL, data);
   /* set timeout time to wait for transmit completion. */
-  timeout = TimerGet_openblt() + MBRTU_BYTE_TX_TIMEOUT_MS;
+  timeout = TimerGet() + MBRTU_BYTE_TX_TIMEOUT_MS;
 
   /* not the last byte of the packet? */
   if (end_of_packet == BLT_FALSE)
@@ -451,7 +451,7 @@ static void MbRtuTransmitByte(blt_int8u data, blt_bool end_of_packet)
       /* keep the watchdog happy */
       CopService();
       /* break loop upon timeout. this would indicate a hardware failure. */
-      if (TimerGet_openblt() > timeout)
+      if (TimerGet() > timeout)
       {
         break;
       }
@@ -469,7 +469,7 @@ static void MbRtuTransmitByte(blt_int8u data, blt_bool end_of_packet)
       /* keep the watchdog happy */
       CopService();
       /* break loop upon timeout. this would indicate a hardware failure. */
-      if (TimerGet_openblt() > timeout)
+      if (TimerGet() > timeout)
       {
         break;
       }
