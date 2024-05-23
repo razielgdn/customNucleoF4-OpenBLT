@@ -16,11 +16,11 @@ This project adds CAN and RS232 interfaces to [OpenBLT](https://www.feaser.com/o
 To use this repo you can follow the documentation from OpenBLT original project. You can activate or deactivate **MBRTU**, **RS232**, and **CAN** interfaces from the **blt_conf.h** file. 
 
 RS232 and MBRTU are mutually exclusive by USART channel because both use the same ports. However, the CAN port can be used simultaneously with the others. The default project configuration is:
-- MBRTU on. Turn to 0 to disable it.     
+- **MBRTU** on. Turn to **0** to disable it.     
   ![](doc/images/01-blt_conf.png)  
-- RS232 on. Turn to 0 to disable it.     
+- **RS232** on. Turn to **0** to disable it.     
   ![](doc/images/02-blt_conf.png)   
-- CAN off. Turn to 1 to enable it.       
+- **CAN** off. Turn to **1** to enable it.       
   ![](doc/images/03-blt_conf.png)   
 
 # Build a demo
@@ -31,10 +31,10 @@ Once the demo is ready OpenBLT could be used to flash it.
 # Connect the Hardware
 
 1. By default, the hardware to flash is configured as follows:
-  - MBRTU is enabled on USART2. 
-  - RS232 is enabled on USART1.
-  - CAN bus is enabled on CAN1.
-    > CAN requires the transceiver to be connected to work. If CAN_Rx and CAN_Tx are not connected, the system cannot be initialized.
+  - MBRTU is enabled on **USART2**. 
+  - RS232 is enabled on **USART1**.
+  - CAN bus is enabled on **CAN1**.
+    > CAN requires the transceiver to be connected to work. **If CAN_Rx and CAN_Tx are not connected, the system cannot be initialized**.
 
 2. Hardware interfaces:
   You can follow the schematics to connect the hardware.   
