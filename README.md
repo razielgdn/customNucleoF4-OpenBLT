@@ -16,13 +16,11 @@ This project adds CAN and RS232 interfaces to [OpenBLT](https://www.feaser.com/o
 To use this repo you can follow the documentation from OpenBLT original project. You can activate or deactivate **MBRTU**, **RS232**, and **CAN** interfaces from the **blt_conf.h** file. 
 
 RS232 and MBRTU are mutually exclusive by USART channel because both use the same ports. However, the CAN port can be used simultaneously with the others. The default project configuration is:
-- MBRTU on.  
+- MBRTU on. Turn to 0 to disable it.     
   ![](doc/images/01-blt_conf.png)  
-
-- RS232 on, using USART1 interface.   
-  ![](doc/images/02-blt_conf.png)  
-
-- CAN off. 
+- RS232 on. Turn to 0 to disable it.     
+  ![](doc/images/02-blt_conf.png)   
+- CAN off. Turn to 1 to disable it.       
   ![](doc/images/03-blt_conf.png)   
 
 # Build a demo
