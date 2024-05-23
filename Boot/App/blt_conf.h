@@ -70,7 +70,7 @@
  * when the receiver node identifier matches BOOT_COM_MBRTU_NODE_ID.
  */
 /** \brief Enable/disable RS485 transport layer. */
-#define BOOT_COM_MBRTU_ENABLE            (0)
+#define BOOT_COM_MBRTU_ENABLE            (1)
 /** \brief Configure the desired communication speed. */
 #define BOOT_COM_MBRTU_BAUDRATE          (57600)
 /** \brief Configure the desired number of stopbits (1 or 2). */
@@ -125,7 +125,7 @@
  *
  */
 /** \brief Enable/disable CAN transport layer. */
-#define BOOT_COM_CAN_ENABLE             (1)
+#define BOOT_COM_CAN_ENABLE             (0)
 /** \brief Configure the desired CAN baudrate. */
 #define BOOT_COM_CAN_BAUDRATE           (125000) //(500000) changed baudrate
 /** \brief Configure CAN message ID target->host. */

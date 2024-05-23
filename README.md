@@ -15,15 +15,15 @@ This project adds CAN and RS232 interfaces to [OpenBLT](https://www.feaser.com/o
 
 To use this repo you can follow the documentation from OpenBLT original project. You can activate or deactivate **MBRTU**, **RS232**, and **CAN** interfaces from the **blt_conf.h** file. 
 
-RS232 and MBRTU are mutually exclusive by USART channel because both use the same ports. The default configuration is: 
-- MBRTU on, using USART2 interface.    
-![](doc/images/01-blt_conf.png)  
+RS232 and MBRTU are mutually exclusive by USART channel because both use the same ports. CAN, however, can be used at the same time as the others. The default configuration is MBRTU and RS232 enabled, with CAN turned off.     
+- MBRTU on.  
+  ![](doc/images/01-blt_conf.png)  
 
 - RS232 on, using USART1 interface.   
-![](doc/images/02-blt_conf.png)  
+  ![](doc/images/02-blt_conf.png)  
 
-- CAN on, using CAN1 interface.   
-![](doc/images/03-blt_conf.png)  
+- CAN off. 
+  ![](doc/images/03-blt_conf.png)   
 
 # Build a demo
 To do a quickly test of the function of this tool, you can get a Demo project in STM32cubeIDE. In this time the example [GPIO_IOToggle](doc/exampleimport.md) was used. To obtain a good function of this application the macro  VECT_TAB_OFFSET in system_stm32f4xx.c was modified to "0x4000" value. You can get more information in [rising embedded blog](https://razielgdn.github.io/risingembeddedmx/projects/en/openblt-start).
@@ -36,6 +36,7 @@ Once the demo is ready OpenBLT could be used to flash it.
   - MBRTU is enabled on USART2. 
   - RS232 is enabled on USART1.
   - CAN bus is enabled on CAN1.
+    > CAN requires the transceiver to be connected to work. If CAN_Rx and CAN_Tx are not connected, the system cannot be initialized.
 
 2. Hardware interfaces:
   You can follow the schematics to connect the hardware.   
