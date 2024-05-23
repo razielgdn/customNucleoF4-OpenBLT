@@ -65,7 +65,7 @@ Following documentation you can use [BootCommander](https://www.feaser.com/openb
 
 > Bootcommander should be buid in the Host machine and it needs [LibOpenBLT](https://www.feaser.com/openblt/doku.php?id=manual:libopenblt), please check documentation to build it before build BootCommander. 
 
-In linux systems (using a rapberrypi or a distro ) You can useBootCommander to flash the software. 
+In linux systems (using a rapberrypi or another distro) You can useBootCommander to flash the software. 
 
 - Flash with MBRTU using usart2 with BootCommander using linux:   
   ` sudo ./BootCommander -s=xcp -t=xcp_mbrtu -d=/dev/ttyACM0 -b=57600 ~/STM32CubeIDE/workspace_1.13.2/GPIO_IOToggle/STM32CubeIDE/Debug/GPIO_IOToggle.srec `
