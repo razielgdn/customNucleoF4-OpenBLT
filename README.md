@@ -20,7 +20,7 @@ RS232 and MBRTU are mutually exclusive by USART channel because both use the sam
   ![](doc/images/01-blt_conf.png)  
 - RS232 on. Turn to 0 to disable it.     
   ![](doc/images/02-blt_conf.png)   
-- CAN off. Turn to 1 to disable it.       
+- CAN off. Turn to 1 to enable it.       
   ![](doc/images/03-blt_conf.png)   
 
 # Build a demo
