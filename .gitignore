@@ -46,7 +46,7 @@
 *.idb
 *.pdb
 *.mk
-
+Boot/Debug/*
 
 
 # Kernel Module Compile Results
